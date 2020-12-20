@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+:root {
+  --background: #e6f4f1;
+  --clr-primary: #ddfe95;
+  --clr-light: #fae982;
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --text-clr: #303b39;
+}
+@media screen and(min-width:768px) {
+  :root {
+    --normal-font-size: 1rem;
+    --small-font-size: 0.813rem;
+  }
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  font-family: 'PT Sans', sans-serif;
+  line-height: 1.6;
+  color: var(--text-clr);
+}
+ul {
+  list-style: none;
+}
+/*styling navbar*/
+
+header,
+nav {
+  margin: 0;
+}
+header {
+  padding: 0 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--clr-primary);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0;
+  padding: 0.5em;
+  margin-right: 1rem;
+  color: #303b39;
+}
+.create-issue {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.create-issue .plus-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.create-issue span {
+  display: inline-block;
+  margin-left: 0.2rem;
+  cursor: pointer;
+}
+.logout-btn {
+  padding: 0.5em;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  border: none;
+  color: #303b39;
+  font-size: 1rem;
+  font-weight: 700;
+  transform: scale(1);
+  letter-spacing: 1px;
+  line-height: 1;
+  transition: transform ease-in-out 150;
+}
+.logout-btn:hover,
+.flogout-btn:focus {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+  transform: scale(1.05);
+  outline: none;
+}
+.app {
+  min-width: 250px;
+  padding: 1.5em;
+  height: 100vh;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    var(--clr-primary) 0%,
+    var(--clr-light) 100%
+  );
+  /* background-color: var(--clr-primary); */
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  padding: 0;
+}
+.form h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 80%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  color: #303b39;
+}
+.form-inputs {
+  margin-bottom: 0.3rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .app {
+    width: 400px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+  }
+  .form-inputs {
+    width: 90%;
+  }
+}
+
+.form-label {
+  display: inline-block;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #303b39;
+}
+.form-input {
+  display: block;
+  padding-left: 10px;
+  outline: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 100%;
+  border: none;
+  color: #303b39;
+  border-radius: 5px;
+  transform: scale(1);
+  transition: transition ease-in-out 150s;
+  background-color: var(--background);
+}
+.form-input:focus {
+  transform: scale(1.06);
+  /* background-color: #9eb7c5; */
+}
+.form-input::placeholder {
+  color: #595959;
+  font-size: 12px;
+}
+.form-input-btn {
+  width: 80%;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  border: none;
+  color: #303b39;
+  font-size: 1rem;
+  font-weight: 700;
+  transform: scale(1);
+  letter-spacing: 1px;
+  line-height: 1;
+  transition: transform ease-in-out 150;
+}
+.form-input-btn:hover,
+.form-input-btn:focus {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+  transform: scale(1.05);
+  outline: none;
+}
+.form-input-links {
+  font-size: 0.84rem;
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 10px;
+  width: 80%;
+  text-align: center;
+  color: #303b39;
+}
+
+.link {
+  text-decoration: none;
+  color: #27cdff;
+
+  transform: scale(1);
+  transition: transition ease-in-out 150s;
+}
+.link:focus,
+.link:hover {
+  transform: scale(2);
+  font-weight: 700;
+  outline: none;
+}
+
+/* styling alerts */
+.alert {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+.alert-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.alert-light {
+  background: var(--light-color);
+  color: #333;
+}
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+.alert-danger {
+  /* background: var(--danger-color); */
+  color: var(--danger-color);
+}
+
+/*styling issues-tables*/
+/* .issue-container {
+  margin: 3em;
+}
+.issue-table {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(50px, 1fr));
+  text-align: center;
+}
+.issue-table > * {
+  border: 1px solid black;
+}
+.issue-col {
+  background-color: var(--clr-primary);
+  border-top: 1px solid black;
+}
+.issue-row {
+  background-color: var(--clr-light);
+} */
+.issue-container {
+  margin: 3em 2em;
+}
+.issue-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.issue-table td,
+.issue-table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.issue-table th {
+  background-color: rgba(39, 176, 255, 0.7);
+  /* background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  ); */
+  color: var(--text-clr);
+}
+.issue-table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+/*responsive*/
+@media (max-width: 767px) {
+  .issue-table thead {
+    display: none;
+  }
+  .issue-table,
+  .issue-table tbody,
+  .issue-table tr,
+  .issue-table td {
+    display: block;
+    width: 100%;
+  }
+  .issue-table tr {
+    margin-bottom: 15px;
+  }
+  .issue-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  .issue-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+  header {
+    flex-direction: column;
+    width: 100%;
+  }
+}
