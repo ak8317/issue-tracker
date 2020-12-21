@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 import PropTypes from 'prop-types';
+
 const Login = ({ login, alerts, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -24,72 +25,75 @@ const Login = ({ login, alerts, isAuthenticated }) => {
   return (
     <div className='app'>
       {/* <Alert /> */}
-      <div className='form-content'>
-        <form className='form' onSubmit={handleSubmit}>
-          <h1>Issue Tracker</h1>
 
-          <div className='form-inputs'>
-            <label className='form-label'>Email</label>
-            <input
-              className='form-input'
-              type='text'
-              placeholder='Enter your email'
-              name='email'
-              value={email}
-              onChange={handleChange}
-            />
-            {alerts &&
-              alerts.map((alert) => {
-                if (alert.param === 'email') {
-                  return (
-                    <p
-                      key={alert.id}
-                      className={`alert alert-${alert.alertType}`}
-                    >
-                      {alert.msg}
-                    </p>
-                  );
-                }
-                return <></>;
-              })}
-          </div>
-          <div className='form-inputs'>
-            <label className='form-label'>Password</label>
-            <input
-              className='form-input'
-              type='password'
-              placeholder='Enter your password'
-              name='password'
-              value={password}
-              onChange={handleChange}
-            />
-            {alerts &&
-              alerts.map((alert) => {
-                if (alert.param === 'password') {
-                  return (
-                    <p
-                      key={alert.id}
-                      className={`alert alert-${alert.alertType}`}
-                    >
-                      {alert.msg}
-                    </p>
-                  );
-                }
-                return <></>;
-              })}
-          </div>
-          <button type='submit' className='form-input-btn'>
-            LOGIN
-          </button>
-          <span className='form-input-links'>
-            {' '}
-            Don't have an account? SignUp{' '}
-            <Link className='link' to='/signup'>
-              here
-            </Link>
-          </span>
-        </form>
-      </div>
+      <form className='form' onSubmit={handleSubmit} noValidate>
+        <h1>Issue Tracker</h1>
+
+        <div className='form-inputs'>
+          {/* <label className='form-label'>Email</label> */}
+          <input
+            className='form-input'
+            type='text'
+            // placeholder='Enter your email'
+            name='email'
+            value={email}
+            onChange={handleChange}
+            required
+          />
+          <label className='form-label'>Email</label>
+          {alerts &&
+            alerts.map((alert) => {
+              if (alert.param === 'email') {
+                return (
+                  <p
+                    key={alert.id}
+                    className={`alert alert-${alert.alertType}`}
+                  >
+                    {alert.msg}
+                  </p>
+                );
+              }
+              return <></>;
+            })}
+        </div>
+        <div className='form-inputs'>
+          {/* <label className='form-label'>Password</label> */}
+          <input
+            className='form-input'
+            type='password'
+            // placeholder='Enter your password'
+            name='password'
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <label className='form-label'>Password</label>
+          {alerts &&
+            alerts.map((alert) => {
+              if (alert.param === 'password') {
+                return (
+                  <p
+                    key={alert.id}
+                    className={`alert alert-${alert.alertType}`}
+                  >
+                    {alert.msg}
+                  </p>
+                );
+              }
+              return <></>;
+            })}
+        </div>
+        <button type='submit' className='form-input-btn'>
+          LOGIN
+        </button>
+        <span className='form-input-links'>
+          {' '}
+          Don't have an account? SignUp{' '}
+          <Link className='link' to='/signup'>
+            here
+          </Link>
+        </span>
+      </form>
     </div>
   );
 };

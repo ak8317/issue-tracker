@@ -12,7 +12,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
-import NavBar from './components/layout/NavBar';
 import Home from './components/layout/Home';
 if (localStorage.token) {
   setAuthToken(localStorage.token);

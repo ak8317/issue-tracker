@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import IssueTable from './IssueTable';
-import { useLocation, useHistory } from 'react-router-dom';
-import mockData from './mockData';
 import axios from 'axios';
-const IssueList = () => {
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { removeIssue } from '../../actions/issue';
+const IssueList = ({ issue, removeIssue }) => {
   const [issues, setIssues] = useState([]);
 
   useEffect(() => {
@@ -24,12 +25,18 @@ const IssueList = () => {
     return function cleanup() {
       mounted = false;
     };
-  }, []);
+  }, [issues]);
+
   return (
     <div className='issue-container'>
       <IssueTable issues={issues} />
     </div>
   );
 };
-
-export default IssueList;
+IssueList.propTypes = {
+  issue: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  issue: state.issue[0],
+});
+export default connect(mapStateToProps, removeIssue)(IssueList);

@@ -142,6 +142,7 @@ header {
 .form-inputs {
   margin-bottom: 0.3rem;
   width: 100%;
+  position: relative;
 }
 
 @media screen and (min-width: 576px) {
@@ -159,15 +160,11 @@ header {
   }
 }
 
-.form-label {
-  display: inline-block;
-  font-size: 1rem;
-  margin-bottom: 6px;
-  color: #303b39;
-}
 .form-input {
   display: block;
+  padding: 0;
   padding-left: 10px;
+
   outline: none;
   border-radius: 2px;
   height: 40px;
@@ -175,12 +172,36 @@ header {
   border: none;
   color: #303b39;
   border-radius: 5px;
-  transform: scale(1);
-  transition: transition ease-in-out 150s;
-  background-color: var(--background);
+  letter-spacing: 1px;
+
+  /* background-color: var(--background); */
+  margin-bottom: 30px;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  outline: none;
+}
+.form-label {
+  display: inline-block;
+  font-size: 1rem;
+  /* color: #303b39; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  letter-spacing: 1;
+  color: var(--text-clr);
+  pointer-events: none;
+  transition: 0.5s;
+  letter-spacing: 1px;
+}
+.form-input:focus ~ label,
+.form-input:valid ~ label {
+  top: -18px;
+  left: 0;
+  color: rgb(0, 232, 236);
+  font-size: 12px;
 }
 .form-input:focus {
-  transform: scale(1.06);
   /* background-color: #9eb7c5; */
 }
 .form-input::placeholder {

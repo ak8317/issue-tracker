@@ -33,18 +33,19 @@ const Signup = ({ setAlert, register, alerts, isAuthenticated }) => {
   return (
     <div className='app'>
       <div className='form-content'>
-        <form className='form' onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit} noValidate>
           <h1>Issue Tracker</h1>
           <div className='form-inputs'>
-            <label className='form-label'>Name</label>
             <input
               className='form-input'
               type='text'
-              placeholder='Enter your name'
+              // placeholder='Enter your name'
               name='name'
               value={name}
               onChange={handleChange}
+              required
             />
+            <label className='form-label'>Name</label>
             {alerts &&
               alerts.map((alert) => {
                 if (alert.param === 'name') {
@@ -61,15 +62,16 @@ const Signup = ({ setAlert, register, alerts, isAuthenticated }) => {
               })}
           </div>
           <div className='form-inputs'>
-            <label className='form-label'>Email</label>
             <input
               className='form-input'
               type='text'
-              placeholder='Enter your email'
+              // placeholder='Enter your email'
               name='email'
               value={email}
               onChange={handleChange}
+              required
             />
+            <label className='form-label'>Email</label>
             {alerts &&
               alerts.map((alert) => {
                 if (alert.param === 'email') {
@@ -86,15 +88,16 @@ const Signup = ({ setAlert, register, alerts, isAuthenticated }) => {
               })}
           </div>
           <div className='form-inputs'>
-            <label className='form-label'>Password</label>
             <input
               className='form-input'
               type='password'
-              placeholder='Enter your password'
+              // placeholder='Enter your password'
               name='password'
               value={password}
               onChange={handleChange}
+              required
             />
+            <label className='form-label'>Password</label>
             {alerts &&
               alerts.map((alert) => {
                 if (alert.param === 'password') {
@@ -111,15 +114,16 @@ const Signup = ({ setAlert, register, alerts, isAuthenticated }) => {
               })}
           </div>
           <div className='form-inputs'>
-            <label className='form-label'>Confirm Password</label>
             <input
               className='form-input'
               type='password'
-              placeholder='Enter your password'
+              // placeholder='Enter your password'
               name='password2'
               value={password2}
               onChange={handleChange}
+              required
             />
+            <label className='form-label'>Confirm Password</label>
             {alerts &&
               alerts.map((alert) => {
                 if (alert.param === 'password2') {
