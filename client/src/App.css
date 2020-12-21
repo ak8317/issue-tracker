@@ -365,3 +365,45 @@ header {
     width: 100%;
   }
 }
+.heading-title {
+  text-decoration: none;
+  color: var(--text-clr);
+}
+.delete-icon {
+  margin-left: 1em;
+  cursor: pointer;
+
+  transform: scale(1);
+  transition: transform ease-in-out 150s;
+}
+.delete-icon:focus,
+.delete-icon:hover {
+  color: red;
+}
+.last-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.btn-yes {
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  border: none;
+  padding: 0.5em 0.7em;
+  border-radius: 5px;
+  outline: none;
+  transform: scale(1);
+}
+.btn-yes:hover,
+.btn-yes:focus {
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+  transform: scale(1.05);
+}

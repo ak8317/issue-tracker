@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import IssueTable from './IssueTable';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { removeIssue } from '../../actions/issue';
-const IssueList = ({ issue, removeIssue }) => {
+
+const IssueList = () => {
   const [issues, setIssues] = useState([]);
 
   useEffect(() => {
@@ -16,7 +14,7 @@ const IssueList = ({ issue, removeIssue }) => {
           setIssues(res.data);
         }
 
-        console.log(res);
+        //console.log(res);
       } catch (err) {
         console.error(err.message);
       }
@@ -33,10 +31,5 @@ const IssueList = ({ issue, removeIssue }) => {
     </div>
   );
 };
-IssueList.propTypes = {
-  issue: PropTypes.object.isRequired,
-};
-const mapStateToProps = (state) => ({
-  issue: state.issue[0],
-});
-export default connect(mapStateToProps, removeIssue)(IssueList);
+
+export default IssueList;

@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { FiLogOut } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import { addIssue } from '../../actions/issue';
-
+import axios from 'axios';
 const customStyles = {
   overlay: {},
   content: {
@@ -45,16 +44,31 @@ const NavBar = ({
   const { title, owner } = formData;
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addIssue(title, owner, user._id);
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const id = user._id;
+    const body = JSON.stringify({ title, owner, id });
+    try {
+      await axios.post('/api/issues', body, config);
+    } catch (err) {
+      console.error(err);
+    }
     setFormData({ title: '', owner: '' });
     setIsOpen(false);
   };
   return (
     <header>
       <div className='header'>
-        <h1>Issue Tracker</h1>
+        <h1>
+          <Link to='/home' className='heading-title'>
+            Issue Tracker
+          </Link>
+        </h1>
         <div className='create-issue' onClick={() => setIsOpen(true)}>
           <FaPlus className='plus-icon' />
           <span>Create Issue</span>
@@ -113,9 +127,8 @@ const NavBar = ({
 NavBar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  addIssue: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, { logout, addIssue })(NavBar);
+export default connect(mapStateToProps, { logout })(NavBar);

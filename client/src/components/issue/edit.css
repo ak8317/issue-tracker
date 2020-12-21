@@ -1,0 +1,17 @@
+.edit-container {
+  margin: 2.5em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.edit-container h2 {
+  border-bottom: 1px solid black;
+}
+.form-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-edit {
+  display: flex;
+  flex-direction: column;
+}
