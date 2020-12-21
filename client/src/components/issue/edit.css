@@ -1,17 +1,133 @@
 .edit-container {
-  margin: 2.5em;
-  border: 1px solid black;
+  margin: 2.5em auto;
+  border: 1px solid rgba(1, 1, 1, 0.2);
   border-radius: 5px;
+  width: 500px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
 }
+
 .edit-container h2 {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.1);
+  padding: 0.2em;
+  margin: 0;
+  padding-left: 0.5em;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.65rem;
 }
 .form-edit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1em;
 }
 .form-edit {
   display: flex;
   flex-direction: column;
+}
+.form-edit {
+  margin: 0;
+  padding: 0;
+  margin-top: 1.5em;
+}
+.static-fields-label {
+  margin-left: 1.7em;
+}
+.label {
+  font-weight: 700;
+  text-align: center;
+}
+.form-edit-inputs input,
+.form-edit-inputs select {
+  background-color: rgba(1, 1, 1, 0.1);
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  letter-spacing: 1.1px;
+}
+.form-edit-inputs input:focus,
+.form-edit-inputs input:hover {
+}
+
+.static-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#label-id {
+  margin-bottom: 1.5em;
+}
+.edit-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+.btn-submit {
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  border: none;
+  color: #303b39;
+  font-size: 1rem;
+  font-weight: 700;
+  transform: scale(1);
+  letter-spacing: 1px;
+  line-height: 1;
+  padding: 0.75em;
+  border-radius: 10px;
+  margin-right: 1em;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform ease-out 150ms;
+  outline: none;
+}
+.btn-submit:focus,
+.btn-submit:hover {
+  transform: scale(1.1);
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+}
+.btn-back {
+  border: none;
+  background: none;
+  color: rgb(39, 143, 255);
+  cursor: pointer;
+  font-size: 1rem;
+  outline: none;
+}
+.btn-back:focus,
+.btn-back:hover {
+  color: rgb(12, 99, 250);
+}
+.form-edit-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1.5em;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .edit-container {
+    width: 80%;
+    min-width: 150px;
+  }
+  .form-edit-container {
+    padding: 0 1em;
+  }
+  .label {
+    text-align: left;
+  }
+  .static-fields-label {
+    margin-left: 0;
+  }
+  .label-status {
+    margin-right: 0;
+    padding-right: 0;
+  }
 }

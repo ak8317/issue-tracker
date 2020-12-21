@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import './edit.css';
@@ -53,7 +52,7 @@ const IssueEdit = () => {
     return function cleanup() {
       mounted = false;
     };
-  }, []);
+  }, [id]);
   const handleChange = (e) => {
     setIssue({ ...issue, [e.target.name]: e.target.value });
   };
@@ -77,12 +76,17 @@ const IssueEdit = () => {
     <div className='edit-container'>
       <h2>Edit Issue</h2>
       <div className='form-edit-container'>
-        <div className=''>ID: {id}</div>
-        <div className=''>Created: {created && created}</div>
-
+        <div className='static-fields'>
+          <label className='static-fields-label label' id='label-id'>
+            ID
+          </label>
+          <label>{id}</label>
+          <label className='static-fields-label label'>Created</label>
+          <label>{created && new Date(created).toDateString()}</label>
+        </div>
         <form className='form-edit' onSubmit={handleSubmit}>
           <div className='form-edit-inputs'>
-            <label>Title</label>
+            <label className='label'>Title</label>
             <input
               name='title'
               type='text'
@@ -90,9 +94,14 @@ const IssueEdit = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='form-edit-inputs'>
-            <label>Status</label>
-            <select name='status' value={status} onChange={handleChange}>
+          <div className='form-edit-inputs select-div'>
+            <label className='label label-status'>Status</label>
+            <select
+              className='select'
+              name='status'
+              value={status}
+              onChange={handleChange}
+            >
               <option value='New'>New</option>
               <option value='Open'>Open</option>
               <option value='Assigned'>Assigned</option>
@@ -102,11 +111,11 @@ const IssueEdit = () => {
             </select>
           </div>
           <div className='form-edit-inputs'>
-            <label>Owner</label>
+            <label className='label'>Owner</label>
             <input name='owner' value={owner} onChange={handleChange} />
           </div>
           <div className='form-edit-inputs'>
-            <label>Priority</label>
+            <label className='label'>Priority</label>
             <input
               name='priority'
               type='text'
@@ -115,23 +124,28 @@ const IssueEdit = () => {
             />
           </div>
           <div className='form-edit-inputs'>
-            <label>Completion Date</label>
+            <label className='label'>Completion Date</label>
             <input
               name='completionDate'
               type='Date'
               value={completionDate ? completionDate : ''}
               onChange={handleChange}
+              className='date'
             />
           </div>
-
-          <button type='submit'>Submit</button>
-          <button
-            onClick={() => {
-              history.push('/home');
-            }}
-          >
-            back
-          </button>
+          <div className='edit-buttons'>
+            <button className='btn btn-submit' type='submit'>
+              Submit
+            </button>
+            <button
+              className='btn btn-back'
+              onClick={() => {
+                history.push('/home');
+              }}
+            >
+              Back
+            </button>
+          </div>
         </form>
       </div>
     </div>
