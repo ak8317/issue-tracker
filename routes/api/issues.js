@@ -48,15 +48,76 @@ router.post(
 //@route Get api/issues/
 //@desc get all Issues
 //@access Private
-router.get('/', async (req, res) => {
-  try {
-    let issues = await Issues.find();
-    if (issues) res.json(issues);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+router.get('/', (req, res) => {
+  // if(req.query._summary===undefined){
+  //   const offset=req.query._offset?parseInt(req.query._offset,10):0
+  //   let limit=req.query._limit?parseInt(req.query._limit,10):20
+  //   if(limit>50)limit=50
+  //   const cursor=Issues.find().sort({_id:1}).skip(offset).limit(limit)
+  //   let totalCount;
+  //   cursor.count(false).then()
+  // }
+  let pageNo = parseInt(req.query.pageNo);
+  let size = parseInt(req.query.size);
+  let query = {};
+  if (pageNo < 0 || pageNo === 0) {
+    return res.json({
+      error: true,
+      message: 'Invalid page number,should start with 1',
+    });
   }
+  query.skip = size * (pageNo - 1);
+  query.limit = size;
+  //find some documents
+  Issues.countDocuments({}, function (err, totalCount) {
+    if (err) {
+      response = { error: true, message: 'Error fetching data' };
+    }
+    Issues.find({}, {}, query, function (err, data) {
+      if (err) {
+        response = { error: true, message: 'Error fetching data' };
+      } else {
+        let totalPages = Math.ceil(totalCount / size);
+        response = {
+          error: false,
+          pages: totalPages,
+          totalRecords: totalCount,
+          message: data,
+        };
+      }
+      res.json(response);
+    });
+  });
+
+  // let issues = await Issues.find();
+  // if (issues) res.json(issues);
+  // } catch (err) {
+  //   console.error(err.message);
+  //   res.status(500).send('Server error');
+  // }
 });
+//@route Get api/issues/:page
+//@desc get paginated issues
+//@access Private
+// router.get('/:page', function(req, res, next) {
+//   let perPage = 6
+//   let page = req.params.page || 1
+
+//   Issues
+//       .find({})
+//       .skip((perPage * page) - perPage)
+//       .limit(perPage)
+//       .exec(function(err, issues) {
+//           Issues.count().exec(function(err, count) {
+//               if (err) return next(err)
+//               res.render('main/products', {
+//                   issues: issues,
+//                   current: page,
+//                   pages: Math.ceil(count / perPage)
+//               })
+//           })
+//       })
+// })
 //@route Get api/issues/:id
 //@desc get one Issues
 //@access Private

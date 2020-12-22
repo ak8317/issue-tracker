@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import Modal from 'react-modal';
-
 const customStyles = {
   overlay: {},
   content: {
