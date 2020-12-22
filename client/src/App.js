@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
   Redirect,
+  withRouter,
 } from 'react-router-dom';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
@@ -30,7 +31,7 @@ function App({ auth: { isAuthenticated } }) {
       <Switch>
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
-        <Route exact path='/home' component={IssueList} />
+        <Route exact path='/home' component={withRouter(IssueList)} />
         <Route exact path='/issues/:id' component={IssueEdit} />
       </Switch>
       <Redirect from='/' to='/signup' />

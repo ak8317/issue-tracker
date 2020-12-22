@@ -49,14 +49,9 @@ router.post(
 //@desc get all Issues
 //@access Private
 router.get('/', (req, res) => {
-  // if(req.query._summary===undefined){
-  //   const offset=req.query._offset?parseInt(req.query._offset,10):0
-  //   let limit=req.query._limit?parseInt(req.query._limit,10):20
-  //   if(limit>50)limit=50
-  //   const cursor=Issues.find().sort({_id:1}).skip(offset).limit(limit)
-  //   let totalCount;
-  //   cursor.count(false).then()
-  // }
+  const filter = {};
+  if (req.query.status) filter.status = req.query.status;
+  if (req.query.priority) filter.priority = req.query.priority;
   let pageNo = parseInt(req.query.pageNo);
   let size = parseInt(req.query.size);
   let query = {};
@@ -73,7 +68,7 @@ router.get('/', (req, res) => {
     if (err) {
       response = { error: true, message: 'Error fetching data' };
     }
-    Issues.find({}, {}, query, function (err, data) {
+    Issues.find(filter, {}, query, function (err, data) {
       if (err) {
         response = { error: true, message: 'Error fetching data' };
       } else {
@@ -96,28 +91,7 @@ router.get('/', (req, res) => {
   //   res.status(500).send('Server error');
   // }
 });
-//@route Get api/issues/:page
-//@desc get paginated issues
-//@access Private
-// router.get('/:page', function(req, res, next) {
-//   let perPage = 6
-//   let page = req.params.page || 1
 
-//   Issues
-//       .find({})
-//       .skip((perPage * page) - perPage)
-//       .limit(perPage)
-//       .exec(function(err, issues) {
-//           Issues.count().exec(function(err, count) {
-//               if (err) return next(err)
-//               res.render('main/products', {
-//                   issues: issues,
-//                   current: page,
-//                   pages: Math.ceil(count / perPage)
-//               })
-//           })
-//       })
-// })
 //@route Get api/issues/:id
 //@desc get one Issues
 //@access Private
