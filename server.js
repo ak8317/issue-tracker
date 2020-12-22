@@ -7,7 +7,11 @@ const app = express();
 
 //config db
 connectDB();
-
+if (process.env.NODE_ENV === 'production') {
+    //app.use(express.static(path.join(__dirname, 'client/build')));
+    //app.use(express.static(process.env.PWD + '/client/build'));
+    app.use(express.static(__dirname + '/client/build'));
+}
 //middlewares
 app.use(cors());
 app.use(express.json({ extended: false }));
