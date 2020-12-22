@@ -8,3 +8,7 @@ View Live Demo application [app](https://issue-tracker-ap.herokuapp.com)
 
 ![Login](./login.PNG) ![Home](./home.PNG) ![Edit](./EDIT.PNG)
 
+Further improvements to be added-
+* Pagination and Search/Filter
+* Demo User to view all issues
+
