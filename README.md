@@ -6,7 +6,7 @@ This is a basic issue-tracker app developed in MERN stack with below features-
 
 View Live Demo application [app](https://issue-tracker-ap.herokuapp.com)
 
-![Login](./login.PNG)  ![Edit](./EDIT.PNG)
+![Login](./login.PNG) ![Home](./List.PNG) ![Edit](./EDIT.PNG)
 
 Further improvements to be added-
 * Pagination and Search/Filter
