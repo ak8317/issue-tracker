@@ -16,12 +16,6 @@ const IssueFilter = ({ getFilter }) => {
     setPriority(e.target.value);
   };
 
-  const clearFilter = (e) => {
-    setStatus('');
-
-    setPriority('');
-    setChanged(false);
-  };
   const applyFilter = () => {
     const newFilter = {};
     if (status) newFilter.status = status;
@@ -41,28 +35,36 @@ const IssueFilter = ({ getFilter }) => {
 
   return (
     <div className='filter-container'>
-      Status:
-      <select value={status} onChange={onChangeStatus}>
-        <option value=''>(Any)</option>
-        <option value='New'>New</option>
-        <option value='Open'>Open</option>
-        <option value='Assigned'>Assigned</option>
-        <option value='Fixed'>Fixed</option>
-        <option value='Verified'>Verified</option>
-        <option value='Closed'>Closed</option>
-      </select>
-      &nbsp;Priority:
-      <select value={priority} onChange={onChangePriority}>
-        <option value=''>(Any)</option>
-        <option value='low'>Low</option>
-        <option value='medium'>Medium</option>
-        <option value='high'>High</option>
-      </select>
-      <button onClick={applyFilter}>Apply</button>
-      <button onClick={resetFilter} disabled={!changed}>
-        Reset
-      </button>
-      <button onClick={clearFilter}>Clear</button>
+      <div className='filter'>
+        <label>Status</label>
+        <select value={status} onChange={onChangeStatus}>
+          <option value=''>(Any)</option>
+          <option value='New'>New</option>
+          <option value='Open'>Open</option>
+          <option value='Assigned'>Assigned</option>
+          <option value='Fixed'>Fixed</option>
+          <option value='Verified'>Verified</option>
+          <option value='Closed'>Closed</option>
+        </select>
+      </div>
+
+      <div className='filter'>
+        <label>Priority</label>
+        <select value={priority} onChange={onChangePriority}>
+          <option value=''>(Any)</option>
+          <option value='low'>Low</option>
+          <option value='medium'>Medium</option>
+          <option value='high'>High</option>
+        </select>
+      </div>
+      <div className='filter-btns'>
+        <button className='filter-btn' onClick={applyFilter}>
+          Apply
+        </button>
+        <button className='reset-btn' onClick={resetFilter} disabled={!changed}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
